@@ -1,0 +1,62 @@
+{
+  "node::Next": {
+    "common.position": {
+      "x": -32.61837455830389,
+      "y": 166.92932862190813
+    }
+  },
+  "node::google_calendar": {
+    "common.position": {
+      "x": 880,
+      "y": -32.618374558303884
+    }
+  },
+  "node::Root": {
+    "common.position": {
+      "x": 0,
+      "y": -251.35335689045937
+    }
+  },
+  "node::swear_words": {
+    "common.position": {
+      "x": 668.2561295238836,
+      "y": -274.1451724701999
+    }
+  },
+  "node::dasha_hello": {
+    "common.position": {
+      "x": 402.9328621908127,
+      "y": 143.90459363957598
+    }
+  },
+  "node::google_calendar_title": {
+    "common.position": {
+      "x": 1623.928583752804,
+      "y": -14.371049413741623
+    }
+  },
+  "node::google_calendar_duration": {
+    "common.position": {
+      "x": 1283.8137476275854,
+      "y": -7.983916340967596
+    }
+  },
+  "node::google_calendar_time": {
+    "common.position": {
+      "x": 1133.7161204173951,
+      "y": 182.03329257406062
+    }
+  },
+  "node::google_calendar_date": {
+    "common.position": {
+      "x": 763.2624021964997,
+      "y": 191.61399218322168
+    }
+  },
+  "node::google_calendar_approv": {
+    "common.position": {
+      "x": 2168.431678206792,
+      "y": 111.77482877354599
+    }
+  }
+}

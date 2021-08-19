@@ -7,12 +7,15 @@
       "common_phrases",
       "sentiment"
     ],
-    "language": "en-US"
+    "language": "ru-RU",
+    "customIntents": {
+      "file": "intents.json"
+    }
   },
   "nlg": {
     "type": "phrases",
     "file": "phrasemap.json",
-    "signatureFile": "phrasemapSignature.json"
+    "signatureFile": "phrasemap.json"
   },
   "dialogue": {
     "file": "main.dsl"

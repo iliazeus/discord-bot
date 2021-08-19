@@ -1,6 +1,27 @@
 {
   "default": {
-    "voiceInfo": { "lang": "en-US", "speaker": "V2", "speed": 0.2 },
-    "phrases": {}
+    "voiceInfo": {
+      "emotion": "good",
+      "lang": "ru-RU",
+      "speaker": "alena",
+      "speed": 1.2
+    },
+    "types": {},
+    "macros": {
+      "google_calendar_approv":{}
+    },
+    "phrases": {
+      "google_calendar_approv": [
+        { "id": "day_of_week", "type": "dynamic"},
+        {"text": " Начало в "},
+        { "id": "google_calendar_time", "type": "dynamic"},
+        {"text": ". Длительность "},
+        { "id": "google_calendar_duration", "type": "dynamic"},
+        {"text": "часа. "},
+        {"text": "Заголовок события: "},
+        { "id": "google_calendar_title", "type": "dynamic"},
+        {"text": ". Всё верно?"}
+      ]
+    }
   }
 }
