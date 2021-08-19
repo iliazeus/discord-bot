@@ -23,6 +23,11 @@ async function main() {
   const discordClient = new discord.Client();
   await discordClient.login(process.env.DISCORD_BOT_TOKEN);
 
+  const botInviteLink = await discordClient.generateInvite({
+    permissions: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS", "CONNECT", "SPEAK", "USE_VAD"],
+  });
+  log.info(`bot invite link: ${botInviteLink}`);
+
   log.info("deploying the dasha application");
 
   const dashaApp = await dasha.deploy(`${__dirname}/../app`);
