@@ -1,5 +1,6 @@
 require("dotenv/config");
 
+const assert = require("assert");
 const events = require("events");
 
 const { DiscordVoiceAdapter } = require("@dasha.ai/discord");
@@ -36,15 +37,32 @@ async function main() {
 
   dashaApp.setExternal("google_calendar_book", gcalendar.book);
 
-  dashaApp.incoming.on("request", async (endpoint, additionalInfo) => {
-    const { discordTextChannelId, discordMessageId } = JSON.parse(additionalInfo);
+  dashaApp.setExternal("discord_invite", async ({ user_name }, conv) => {
+    try {
+      const voiceChannel = await discordClient.channels.fetch(conv.input.discord.voiceChannelId);
+      assert(voiceChannel instanceof discord.VoiceChannel);
 
-    const conv = dashaApp.createConversation({ endpoint });
+      const invite = await voiceChannel.createInvite({ unique: true, maxAge: 5 * 60 });
+
+      const member = (await voiceChannel.guild.members.fetch({ query: user_name })).first();
+      await member.send(invite);
+
+      return "success";
+    } catch (error) {
+      log.error(error);
+      return "error";
+    }
+  });
+
+  dashaApp.incoming.on("request", async (endpoint, additionalInfo) => {
+    const { discord } = JSON.parse(additionalInfo);
+
+    const conv = dashaApp.createConversation({ endpoint, discord });
 
     /** @type discord.TextChannel */
-    const discordTextChannel = await discordClient.channels.fetch(discordTextChannelId);
+    const discordTextChannel = await discordClient.channels.fetch(discord.startTextChannelId);
 
-    const discordMessage = await discordTextChannel.messages.fetch(discordMessageId);
+    const discordMessage = await discordTextChannel.messages.fetch(discord.startMessageId);
 
     conv.on("transcription", async (t) => {
       discordMessage.reply(`${t.speaker}: ${t.text}`);
@@ -85,8 +103,11 @@ async function main() {
       const dashaAudioClientAccount = await dashaApp.getAudioClientAccount();
       const dashaAudioChannel = await dasha.audioClient.connect(dashaAudioClientAccount, {
         additionalInfo: JSON.stringify({
-          discordTextChannelId: message.channel.id,
-          discordMessageId: message.id,
+          discord: {
+            voiceChannelId: discordVoiceChannel.id,
+            startTextChannelId: message.channel.id,
+            startMessageId: message.id,
+          },
         }),
       });
 
