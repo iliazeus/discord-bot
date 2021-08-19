@@ -11,7 +11,13 @@ const log = require("./log");
 dasha.log.clear();
 dasha.log.add(log);
 
+const gcalendar = require("./google-calendar");
+
 async function main() {
+  log.info("authorizing with google calendar");
+
+  await gcalendar.authorize();
+
   log.info("logging into discord");
 
   const discordClient = new discord.Client();
@@ -22,6 +28,8 @@ async function main() {
   const dashaApp = await dasha.deploy(`${__dirname}/app`);
 
   dashaApp.connectionProvider = () => dasha.audio.connect();
+
+  dashaApp.setExternal("google_calendar_book", gcalendar.book);
 
   dashaApp.incoming.on("request", async (endpoint, additionalInfo) => {
     const { discordTextChannelId, discordMessageId } = JSON.parse(additionalInfo);
