@@ -25,7 +25,7 @@ async function main() {
 
   log.info("deploying the dasha application");
 
-  const dashaApp = await dasha.deploy(`${__dirname}/app`);
+  const dashaApp = await dasha.deploy(`${__dirname}/../app`);
 
   dashaApp.connectionProvider = () => dasha.audio.connect();
 
