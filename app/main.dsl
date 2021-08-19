@@ -8,30 +8,34 @@ context
   google_calendar_title: string? = null;
 }
 
-/*
-google_calendar_book - для бронирования времени Эвента (event) в гугл календаре
-day_of_week - день недели, может принимать значения "monday", "thursday", "wednesday"и т.п.
-time_hour - время начала эвента в часах
-time_duration - длительность эвента в часах
-title - заголовок эвента
-Результаты на возврат: 
-- успешно создано - эвент успешно создан т.е. не пересекался с другими эвентами. Значение к возврату "success"
-- эвент пересекается с другими эвентами Значение к возврату "fail_cross"
+/**
+Забронировать событие в Google Calendar
+
+@param day_of_week - от"monday" до "sunday"
+@param time_hour - время начаал события; [0; 24)
+@param time_duration - продолжительность события в часах
+@param title event - заголовок события
+
+@returns "success" - событие успешно создано
+@returns "conflict" - время события пересекается с другими событиями
+@returns "error" - ошибка создания события
 */
+external function google_calendar_book(
+day_of_week: string,
+time_hour: number,
+time_duration: number,
+title: string
+): "success" | "conflict" | "error";
 
-external function google_calendar_book (day_of_week: string, time_hour: number, time_duration: number, title: string): string;
+/**
+Пригласить пользователя Discord в голосовой канал, в котором находится бот
 
+@param user_name - какого пользователя пригласить
 
-/*
-invite - для приглашения в голосовой канал, где находится бот
-friend - имя пользователя, которого хочу пригласить в канал
-Результаты на возврат: 
-- человек приглашен Значение к возврату "invited"
-- любая другая ошибка Значение к возврату "invite_failed"
+@returns "success" - приглашение успешно отправлено
+@returns "error" - ошибка отправки приглашения
 */
-external function invite (friend: string): string;
-
-
+external function discord_invite(user_name: string): "success" | "error";
 
 start node root
 {
@@ -44,7 +48,7 @@ start node root
   
   transitions
   {
-  //  next: goto Next on true;
+    //  next: goto Next on true;
   }
 }
 
@@ -71,14 +75,18 @@ node invite
 {
   do
   {
-    digression disable {dasha_hello};
+    digression disable
+    {
+      dasha_hello
+    }
+    ;
     #sayText("Кого пригласить?");
     wait *;
   }
   
   transitions
   {
-transition0: goto friends on #messageHasData("friends");
+    transition0: goto friends on #messageHasData("friends");
   }
 }
 
@@ -88,7 +96,6 @@ node friends
   {
     wait *;
     goto transition0;
-
   }
   
   transitions
@@ -101,14 +108,18 @@ node google_calendar_date
 {
   do
   {
-    digression disable {dasha_hello};
+    digression disable
+    {
+      dasha_hello
+    }
+    ;
     #sayText("На какой день недели?");
     wait *;
   }
   
   transitions
   {
-transition0: goto google_calendar_time on #messageHasData("day_of_week");
+    transition0: goto google_calendar_time on #messageHasData("day_of_week");
   }
 }
 
@@ -123,7 +134,7 @@ node google_calendar_time
   
   transitions
   {
-transition0: goto google_calendar_duration on #messageHasData("time_hour");
+    transition0: goto google_calendar_duration on #messageHasData("time_hour");
   }
 }
 
@@ -138,7 +149,7 @@ node google_calendar_duration
   
   transitions
   {
-transition0: goto google_calendar_title on #messageHasData("time_hour");
+    transition0: goto google_calendar_title on #messageHasData("time_hour");
   }
 }
 
@@ -153,18 +164,16 @@ node google_calendar_title
   
   transitions
   {
-transition0: goto google_calendar_approv on true;
-
+    transition0: goto google_calendar_approv on true;
   }
   onexit
+  {
+    transition0: do
     {
-        transition0: do
-        {
-            set $google_calendar_title = #getMessageText();
-        }
+      set $google_calendar_title = #getMessageText();
     }
+  }
 }
-
 
 node google_calendar_approv
 {
@@ -173,11 +182,12 @@ node google_calendar_approv
     #sayText("Давайте сверимся, я создаю событие в календаре на");
     #say("google_calendar_approv",
     {
-    day_of_week: $day_of_week, 
-    google_calendar_time: $google_calendar_time, 
-    google_calendar_duration: $google_calendar_duration,
-    google_calendar_title: $google_calendar_title
-    });
+      day_of_week: $day_of_week,
+      google_calendar_time: $google_calendar_time,
+      google_calendar_duration: $google_calendar_duration,
+      google_calendar_title: $google_calendar_title
+    }
+    );
     wait *;
   }
   transitions
@@ -186,19 +196,18 @@ node google_calendar_approv
   }
 }
 
-
 /*
 node Next
 {
-  do
-  {
-    #sayText("Вы сказали " + #getMessageText());
-    wait *;
-  }
-  
-  transitions
-  {
-    next: goto Next on true;
-  }
+do
+{
+#sayText("Вы сказали " + #getMessageText());
+wait *;
+}
+
+transitions
+{
+next: goto Next on true;
+}
 }
 */
