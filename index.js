@@ -1,24 +1,12 @@
+require("dotenv/config");
+
 const events = require("events");
 
 const { DiscordVoiceAdapter } = require("@dasha.ai/discord");
 const dasha = require("@dasha.ai/sdk");
 const discord = require("discord.js");
-const winston = require("winston");
 
-require("dotenv/config");
-
-const log = winston.createLogger({
-  transports: new winston.transports.Console({
-    format: winston.format.combine(
-      winston.format.colorize(),
-      winston.format.timestamp(),
-      winston.format.printf(
-        ({ timestamp, label, level, message, stack }) =>
-          `${timestamp} [${label ?? "app"}] ${level} ${stack ?? message}`
-      )
-    ),
-  }),
-});
+const log = require("./log");
 
 dasha.log.clear();
 dasha.log.add(log);
