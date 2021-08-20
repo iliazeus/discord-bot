@@ -2,6 +2,7 @@ require("dotenv/config");
 
 const assert = require("assert");
 const events = require("events");
+const fs = require("fs"); 
 
 const { DiscordVoiceAdapter } = require("@dasha.ai/discord");
 const dasha = require("@dasha.ai/sdk");
@@ -67,6 +68,21 @@ async function main() {
     conv.on("transcription", async (t) => {
       discordMessage.reply(`${t.speaker}: ${t.text}`);
     });
+
+
+  const logFile = await fs.promises.open(`${__dirname}/../log.txt`, "w");
+  await logFile.appendFile("#".repeat(100) + "\n");
+
+  conv.on("transcription", async (entry) => {
+    await logFile.appendFile(`${entry.speaker}: ${entry.text}\n`);
+  });
+
+  conv.on("debugLog", async (event) => {
+    if (event?.msg?.msgId === "RecognizedSpeechMessage") {
+      const logEntry = event?.msg?.results[0]?.facts;
+      await logFile.appendFile(JSON.stringify(logEntry, undefined, 2) + "\n");
+    }
+  });
 
     await conv.execute();
   });

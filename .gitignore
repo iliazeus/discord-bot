@@ -1,3 +1,4 @@
 *.env
 *.dashasp
+*log*
 node_modules
