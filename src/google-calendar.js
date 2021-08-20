@@ -77,24 +77,33 @@ module.exports.book = async function book({ day_of_week, time_hour, time_duratio
     const calendarApi = google.calendar({ version: "v3", auth: oauth2Client });
 
     const { data: calendars } = await calendarApi.calendarList.list();
-    const calendarId = calendars.items[0]?.id;
-    if (!calendarId) throw new Error("no calendars associated with a user");
+
+    const calendar = calendars.items.find((c) => c.accessRole === "owner");
+    if (calendar === undefined) throw new Error("no owned calendar found");
+
+    log.info(`using calendar ${calendar.id}`);
 
     const { data: conflictingEvents } = await calendarApi.events.list({
-      calendarId,
+      calendarId: calendar.id,
       timeMin: eventStart.toISO(),
       timeMax: eventEnd.toISO(),
     });
-    if (conflictingEvents.items.length > 0) return "conflict";
+
+    if (conflictingEvents.items.length > 0) {
+      log.info("event conflict found");
+      return "conflict";
+    }
 
     await calendarApi.events.insert({
-      calendarId,
+      calendarId: calendar.id,
       requestBody: {
         start: { dateTime: eventStart.toISO() },
         end: { dateTime: eventEnd.toISO() },
         summary: title,
       },
     });
+
+    log.info("event booked successfully");
 
     return "success";
   } catch (error) {
