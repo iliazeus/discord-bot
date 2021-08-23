@@ -14,12 +14,12 @@
       "google_calendar_approv": [
         { "id": "day_of_week", "type": "dynamic"},
         {"text": " Начало в "},
-        { "id": "google_calendar_time", "type": "dynamic"},
+        { "id": "time_hour", "type": "dynamic"},
         {"text": ". Длительность "},
-        { "id": "google_calendar_duration", "type": "dynamic"},
+        { "id": "time_duration", "type": "dynamic"},
         {"text": "часа. "},
         {"text": "Заголовок события: "},
-        { "id": "google_calendar_title", "type": "dynamic"},
+        { "id": "title", "type": "dynamic"},
         {"text": ". Всё верно?"}
       ]
     }

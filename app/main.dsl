@@ -2,10 +2,10 @@ context
 {
   input endpoint: string;
   dasha_hello: boolean = false;
-  day_of_week: string? = null;
-  google_calendar_duration: string? = null;
-  google_calendar_time: string? = null;
-  google_calendar_title: string? = null;
+  day_of_week: string?;
+  time_duration: number?;
+  time_hour: number?;
+  title: string?;
 }
 
 /**
@@ -129,6 +129,7 @@ node google_calendar_time
   {
     set $day_of_week = #messageGetData("day_of_week")[0]?.value;
     #sayText("На какое время?");
+    
     wait *;
   }
   
@@ -142,7 +143,9 @@ node google_calendar_duration
 {
   do
   {
-    set $google_calendar_time = #messageGetData("time_hour")[0]?.value;
+    var x = #messageGetData("time_hour")[0]?.value??"";
+    
+    set $time_hour=#parseInt(x);
     #sayText("Какая длительность разговора?");
     wait *;
   }
@@ -157,7 +160,8 @@ node google_calendar_title
 {
   do
   {
-    set $google_calendar_duration = #messageGetData("time_hour")[0]?.value;
+    var y = #messageGetData("time_hour")[0]?.value??"";
+    set $time_duration = #parseInt(y);
     #sayText("Какой заголовок?");
     wait *;
   }
@@ -170,7 +174,7 @@ node google_calendar_title
   {
     transition0: do
     {
-      set $google_calendar_title = #getMessageText();
+      set $title = #getMessageText();
     }
   }
 }
@@ -183,18 +187,62 @@ node google_calendar_approv
     #say("google_calendar_approv",
     {
       day_of_week: $day_of_week,
-      google_calendar_time: $google_calendar_time,
-      google_calendar_duration: $google_calendar_duration,
-      google_calendar_title: $google_calendar_title
+      time_hour: $time_hour,
+      time_duration: $time_duration,
+      title: $title
     }
     );
     wait *;
   }
   transitions
   {
-    next: goto google_calendar_approv on #messageHasIntent("bookingg");
+    next: goto google_calendar_try on true;
   }
 }
+
+node google_calendar_try
+{
+  do
+  {
+    #sayText("Бронирую");
+    
+    external google_calendar_book(
+    $day_of_week ?? "",
+    $time_hour ?? 0,
+    $time_duration ?? 0,
+    $title ?? ""
+    );
+    goto next;
+  }
+  transitions
+  {
+    next: goto google_calendar_result;
+  }
+}
+
+node google_calendar_result
+{
+  do
+  {
+    #sayText("Готово, статус попытки ");
+    var result = external google_calendar_book(
+          $day_of_week ?? "",
+    $time_hour ?? 0,
+    $time_duration ?? 0,
+    $title ?? ""
+    );
+if (result == "success") { #sayText("Успешно");}
+if (result == "conflict") { #sayText("Конфликт");}
+if (result == "error") { #sayText("Ошибка");}
+
+    wait *;
+  }
+  transitions
+  {
+    next: goto google_calendar_approv on #messageHasIntent("inhg");
+  }
+}
+
 
 /*
 node Next
