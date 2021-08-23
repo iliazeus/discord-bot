@@ -50,7 +50,7 @@ async function main() {
       const member = (await voiceChannel.guild.members.fetch({ query: user_name })).first();
       if (member === undefined) throw new Error(`no user found: ${JSON.stringify(user_name)}`);
 
-      await member.send(invite);
+      await member.send(invite.toString());
 
       log.info(`successfully invited ${JSON.stringify(user_name)}`);
       return "success";
