@@ -2,7 +2,7 @@ require("dotenv/config");
 
 const assert = require("assert");
 const events = require("events");
-const fs = require("fs"); 
+const fs = require("fs");
 
 const { DiscordVoiceAdapter } = require("@dasha.ai/discord");
 const dasha = require("@dasha.ai/sdk");
@@ -34,13 +34,13 @@ async function main() {
 
   const dashaApp = await dasha.deploy(`${__dirname}/../app`);
 
-  dashaApp.connectionProvider = () => dasha.audio.connect();
+  dashaApp.connectionProvider = () => dasha.audio.connect({ vad: { interlocutorPauseDelay: 0.9 } });
 
   dashaApp.setExternal("google_calendar_book", gcalendar.book);
 
   dashaApp.setExternal("discord_invite", async ({ user_name }, conv) => {
     try {
-      log.info(`trying to invite ${JSON.stringify(user_name)}`)
+      log.info(`trying to invite ${JSON.stringify(user_name)}`);
 
       const voiceChannel = await discordClient.channels.fetch(conv.input.discord.voiceChannelId);
       assert(voiceChannel instanceof discord.VoiceChannel);
@@ -74,20 +74,19 @@ async function main() {
       discordMessage.reply(`${t.speaker}: ${t.text}`);
     });
 
+    const logFile = await fs.promises.open(`${__dirname}/../log.txt`, "w");
+    await logFile.appendFile("#".repeat(100) + "\n");
 
-  const logFile = await fs.promises.open(`${__dirname}/../log.txt`, "w");
-  await logFile.appendFile("#".repeat(100) + "\n");
+    conv.on("transcription", async (entry) => {
+      await logFile.appendFile(`${entry.speaker}: ${entry.text}\n`);
+    });
 
-  conv.on("transcription", async (entry) => {
-    await logFile.appendFile(`${entry.speaker}: ${entry.text}\n`);
-  });
-
-  conv.on("debugLog", async (event) => {
-    if (event?.msg?.msgId === "RecognizedSpeechMessage") {
-      const logEntry = event?.msg?.results[0]?.facts;
-      await logFile.appendFile(JSON.stringify(logEntry, undefined, 2) + "\n");
-    }
-  });
+    conv.on("debugLog", async (event) => {
+      if (event?.msg?.msgId === "RecognizedSpeechMessage") {
+        const logEntry = event?.msg?.results[0]?.facts;
+        await logFile.appendFile(JSON.stringify(logEntry, undefined, 2) + "\n");
+      }
+    });
 
     await conv.execute();
   });
