@@ -1,19 +1,6 @@
 ####################################################################################################
-ai: Привет, я тут Привет, я тут
+ai: Привет, я тут
 [
-  {
-    "type": "Intent",
-    "skill": "c2c9eb5f4a7058944840b9b3256f5490",
-    "weight": 0.60647,
-    "likelihood": 1,
-    "location": {
-      "start": -1,
-      "end": -1
-    },
-    "intent": "dasha",
-    "state": "positive",
-    "sentenceType": "statement"
-  },
   {
     "type": "Intent",
     "skill": "common_phrases",
@@ -23,7 +10,7 @@ ai: Привет, я тут Привет, я тут
       "start": 0,
       "end": 0
     },
-    "intent": "potential_ignore",
+    "intent": "ping",
     "state": "positive",
     "sentenceType": "statement"
   },
@@ -41,13 +28,214 @@ ai: Привет, я тут Привет, я тут
     "sentenceType": "statement"
   }
 ]
-human: шо
+human: алло 
+[
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": "ping",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  }
+]
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 3
+    },
+    "intent": "agreement",
+    "state": "positive",
+    "sentenceType": "request"
+  }
+]
+human: давайте сначала я поговорю 
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 3
+    },
+    "intent": "agreement",
+    "state": "positive",
+    "sentenceType": "request"
+  }
+]
+human: але 
+[
+  {
+    "type": "Intent",
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.5561,
+    "likelihood": 1,
+    "location": {
+      "start": -1,
+      "end": -1
+    },
+    "intent": "dasha",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 4
+    },
+    "intent": "repeat",
+    "state": "positive",
+    "sentenceType": "request"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 4
+    },
+    "intent": null,
+    "state": "negative",
+    "sentenceType": "statement"
+  }
+]
+human: даша никого похожего не слышит 
+[
+  {
+    "type": "Intent",
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.5561,
+    "likelihood": 1,
+    "location": {
+      "start": -1,
+      "end": -1
+    },
+    "intent": "dasha",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 4
+    },
+    "intent": "repeat",
+    "state": "positive",
+    "sentenceType": "request"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 4
+    },
+    "intent": null,
+    "state": "negative",
+    "sentenceType": "statement"
+  }
+]
 ai: Слушаю
 [
   {
     "type": "Intent",
-    "skill": "c2c9eb5f4a7058944840b9b3256f5490",
-    "weight": 1,
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.67046,
+    "likelihood": 1,
+    "location": {
+      "start": -1,
+      "end": -1
+    },
+    "intent": "dasha",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": null,
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+human: да 
+[
+  {
+    "type": "Intent",
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.67046,
+    "likelihood": 1,
+    "location": {
+      "start": -1,
+      "end": -1
+    },
+    "intent": "dasha",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": null,
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+ai: Слушаю
+[
+  {
+    "type": "Intent",
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.9898,
     "likelihood": 1,
     "location": {
       "start": -1,
@@ -71,9 +259,21 @@ ai: Слушаю
     "sentenceType": "request"
   }
 ]
-human: забронируй встре
-ai: На какой день недели?
+human: забронируй встречу 
 [
+  {
+    "type": "Intent",
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.9898,
+    "likelihood": 1,
+    "location": {
+      "start": -1,
+      "end": -1
+    },
+    "intent": "booking",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
   {
     "type": "Intent",
     "skill": "sentiment",
@@ -81,19 +281,19 @@ ai: На какой день недели?
     "likelihood": -1,
     "location": {
       "start": 0,
-      "end": 0
+      "end": 1
     },
     "intent": null,
     "state": "neutral",
-    "sentenceType": "statement"
+    "sentenceType": "request"
   }
 ]
-human: уббота
+ai: На какой день недели забронировать встречу?
 [
   {
     "type": "Data",
-    "skill": "c2c9eb5f4a7058944840b9b3256f5490",
-    "weight": 0.99999,
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.98823,
     "likelihood": 1,
     "location": {
       "start": 0,
@@ -101,7 +301,7 @@ human: уббота
     },
     "factType": "day_of_week",
     "data": {
-      "value": "суббота"
+      "value": "пятница"
     }
   },
   {
@@ -118,38 +318,67 @@ human: уббота
     "sentenceType": "statement"
   }
 ]
-ai: На какое время?
+human: пятница 
 [
   {
     "type": "Data",
-    "skill": "c2c9eb5f4a7058944840b9b3256f5490",
-    "weight": 0.99999,
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.98823,
     "likelihood": 1,
     "location": {
       "start": 0,
-      "end": 9
+      "end": 7
+    },
+    "factType": "day_of_week",
+    "data": {
+      "value": "пятница"
+    }
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  }
+]
+ai: Какое время начала встречи?
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 3
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Data",
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.99997,
+    "likelihood": 1,
+    "location": {
+      "start": 2,
+      "end": 12
     },
     "factType": "time_hour",
     "data": {
       "value": "15"
     }
-  },
-  {
-    "type": "Intent",
-    "skill": "sentiment",
-    "weight": -1,
-    "likelihood": -1,
-    "location": {
-      "start": 0,
-      "end": 0
-    },
-    "intent": null,
-    "state": "neutral",
-    "sentenceType": "statement"
   }
 ]
-human: пятнадцат
-ai: Какая длительность разговора?
+human: в пятнадцать ноль ноль 
 [
   {
     "type": "Intent",
@@ -158,19 +387,33 @@ ai: Какая длительность разговора?
     "likelihood": -1,
     "location": {
       "start": 0,
-      "end": 0
+      "end": 3
     },
     "intent": null,
     "state": "neutral",
     "sentenceType": "statement"
+  },
+  {
+    "type": "Data",
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.99997,
+    "likelihood": 1,
+    "location": {
+      "start": 2,
+      "end": 12
+    },
+    "factType": "time_hour",
+    "data": {
+      "value": "15"
+    }
   }
 ]
-human: часноч
+ai: Сколько будет длиться встреча?
 [
   {
     "type": "Data",
-    "skill": "c2c9eb5f4a7058944840b9b3256f5490",
-    "weight": 0.99986,
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.9994,
     "likelihood": 1,
     "location": {
       "start": 0,
@@ -195,8 +438,22 @@ human: часноч
     "sentenceType": "statement"
   }
 ]
-ai: Какой заголовок?
+human: один час 
 [
+  {
+    "type": "Data",
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.9994,
+    "likelihood": 1,
+    "location": {
+      "start": 0,
+      "end": 8
+    },
+    "factType": "time_hour",
+    "data": {
+      "value": "1"
+    }
+  },
   {
     "type": "Intent",
     "skill": "sentiment",
@@ -211,15 +468,164 @@ ai: Какой заголовок?
     "sentenceType": "statement"
   }
 ]
-human: тестовый заголов
-ai: Давайте сверимся, я создаю событие в календаре на
-ai: суббота Начало в 15. Длительность 1часа. Заголовок события: тестовый заголов. Всё верно?
-human: да
+ai: Как мне назвать встречу?
 [
   {
     "type": "Intent",
-    "skill": "c2c9eb5f4a7058944840b9b3256f5490",
-    "weight": 0.96453,
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 2
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Data",
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.91379,
+    "likelihood": 1,
+    "location": {
+      "start": 9,
+      "end": 16
+    },
+    "factType": "day_of_week",
+    "data": {
+      "value": "пятница"
+    }
+  }
+]
+human: отмечу в пятницу 
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 2
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Data",
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.91379,
+    "likelihood": 1,
+    "location": {
+      "start": 9,
+      "end": 16
+    },
+    "factType": "day_of_week",
+    "data": {
+      "value": "пятница"
+    }
+  }
+]
+ai: Давайте сверимся, я создаю событие в календаре 
+ai: День недели пятница с пятнадцати до шестнадцати часов. Заголовок события: отмечу в пятницу . Всё верно?
+[
+  {
+    "type": "Intent",
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.97805,
+    "likelihood": 1,
+    "location": {
+      "start": -1,
+      "end": -1
+    },
+    "intent": "change_title",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 1
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  }
+]
+human: другой заголовок 
+ai: Как мне назвать встречу?
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 3
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Data",
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.94318,
+    "likelihood": 1,
+    "location": {
+      "start": 19,
+      "end": 26
+    },
+    "factType": "day_of_week",
+    "data": {
+      "value": "пятница"
+    }
+  }
+]
+human: тестовая встреча в пятницу 
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 3
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Data",
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.94318,
+    "likelihood": 1,
+    "location": {
+      "start": 19,
+      "end": 26
+    },
+    "factType": "day_of_week",
+    "data": {
+      "value": "пятница"
+    }
+  }
+]
+ai: Давайте сверимся, я создаю событие в календаре 
+ai: День недели пятница с пятнадцати до шестнадцати часов. Заголовок события: тестовая встреча в пятницу . Всё верно?
+[
+  {
+    "type": "Intent",
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.67046,
     "likelihood": 1,
     "location": {
       "start": -1,
@@ -243,6 +649,663 @@ human: да
     "sentenceType": "statement"
   }
 ]
-ai: Бронирую
-ai: Готово, статус попытки 
-ai: Ошибка
+human: да 
+[
+  {
+    "type": "Intent",
+    "skill": "30db7e279dc13ecb35109f4f58dde2c6",
+    "weight": 0.6516,
+    "likelihood": 1,
+    "location": {
+      "start": -1,
+      "end": -1
+    },
+    "intent": "dasha",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 1
+    },
+    "intent": "may_continue",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 1
+    },
+    "intent": null,
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 1
+    },
+    "intent": null,
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+ai: Создаю встречу
+ai: К сожалению, на это время у вас уже есть встреча, давайте выберем другое время?
+ai: Режим ожидания
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 16
+    },
+    "intent": "common",
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+human: сейчас ушла в режим ожидания то есть заново можно теперь назначать встречу конец не доделала потому что 
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 16
+    },
+    "intent": "common",
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 21
+    },
+    "intent": null,
+    "state": "negative",
+    "sentenceType": "statement"
+  }
+]
+human: не доделано реализация что она может а зачитывать заголовки встреча с которыми пересекается и чтобы можно было всё равно туда запихнуть если пользователь пожелает 
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 21
+    },
+    "intent": null,
+    "state": "negative",
+    "sentenceType": "statement"
+  }
+]
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 4
+    },
+    "intent": null,
+    "state": "negative",
+    "sentenceType": "statement"
+  }
+]
+human: никакого занимается он не успел 
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 5
+    },
+    "intent": null,
+    "state": "negative",
+    "sentenceType": "statement"
+  }
+]
+human: алло 
+[
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": "ping",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  }
+]
+human: алло 
+[
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": "ping",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  }
+]
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 5
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 3,
+      "end": 4
+    },
+    "intent": "dont_understand",
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+human: минуты она вообще не понимает сейчас 
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 5
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 3,
+      "end": 4
+    },
+    "intent": "dont_understand",
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+[]
+human: вы меня что грузить это вы напишите мне сценарий в гугл доки как бы я и по нему и пройду 
+[]
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 2
+    },
+    "intent": "common",
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+human: ну правильно говоришь 
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 2
+    },
+    "intent": "common",
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+[
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": "ping",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  }
+]
+human: але 
+[
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": "ping",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  }
+]
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 17
+    },
+    "intent": null,
+    "state": "negative",
+    "sentenceType": "statement"
+  }
+]
+human: плавающий он как бы типа может не быть а потом будет у меня такое уже было не раз 
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 17
+    },
+    "intent": null,
+    "state": "negative",
+    "sentenceType": "statement"
+  }
+]
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 2,
+      "end": 4
+    },
+    "intent": null,
+    "state": "negative",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 7,
+      "end": 9
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "request"
+  }
+]
+human: типа ты никогда не угадаешь пока не запустим по моему 
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 2,
+      "end": 4
+    },
+    "intent": null,
+    "state": "negative",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 7,
+      "end": 9
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "request"
+  }
+]
+[
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 12
+    },
+    "intent": "dont_understand",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 12
+    },
+    "intent": null,
+    "state": "negative",
+    "sentenceType": "statement"
+  }
+]
+human: поздняков стимпанк разбирался и да убирайте не может понять что мне тоже подключился 
+[
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 12
+    },
+    "intent": "dont_understand",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 12
+    },
+    "intent": null,
+    "state": "negative",
+    "sentenceType": "statement"
+  }
+]
+[
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 2
+    },
+    "intent": "potential_call_later",
+    "state": "positive",
+    "sentenceType": "request"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 2
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "request"
+  }
+]
+human: ну некогда дайте 
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 1
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "request"
+  }
+]
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 1
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 1,
+      "end": 1
+    },
+    "intent": "wait",
+    "state": "positive",
+    "sentenceType": "request"
+  }
+]
+human: сейчас секунду 
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 1
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 1,
+      "end": 1
+    },
+    "intent": "wait",
+    "state": "positive",
+    "sentenceType": "request"
+  }
+]
+[
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 11
+    },
+    "intent": "are_you_a_robot",
+    "state": "positive",
+    "sentenceType": "question"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 11
+    },
+    "intent": "agreement",
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+human: а тут обновлю мы хотим показать типа возможностей написание бота в дискорде 
+[
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 11
+    },
+    "intent": "are_you_a_robot",
+    "state": "positive",
+    "sentenceType": "question"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 11
+    },
+    "intent": "agreement",
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]

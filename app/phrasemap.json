@@ -12,13 +12,13 @@
     },
     "phrases": {
       "google_calendar_approv": [
+        {"text": "День недели "},
         { "id": "day_of_week", "type": "dynamic"},
-        {"text": " Начало в "},
-        { "id": "time_hour", "type": "dynamic"},
-        {"text": ". Длительность "},
-        { "id": "time_duration", "type": "dynamic"},
-        {"text": "часа. "},
-        {"text": "Заголовок события: "},
+        {"text": " с "},
+        { "id": "time_hour_say", "type": "dynamic"},
+        {"text": " до "},
+        { "id": "duration_say", "type": "dynamic"},
+        {"text": ". Заголовок события: "},
         { "id": "title", "type": "dynamic"},
         {"text": ". Всё верно?"}
       ]

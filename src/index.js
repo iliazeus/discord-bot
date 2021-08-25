@@ -35,7 +35,7 @@ async function main() {
   const dashaApp = await dasha.deploy(`${__dirname}/../app`);
 
   dashaApp.connectionProvider = () => dasha.audio.connect({ vad: { interlocutorPauseDelay: 0.9 } });
-
+  dashaApp.sttDispatcher = () => "dasha";
   dashaApp.setExternal("google_calendar_book", gcalendar.book);
 
   dashaApp.setExternal("discord_invite", async ({ user_name }, conv) => {
