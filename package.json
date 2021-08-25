@@ -14,7 +14,7 @@
     "prettier": "^2.3.2"
   },
   "dependencies": {
-    "@dasha.ai/discord": "file:dasha.ai-discord-0.1.3.tgz",
+    "@dasha.ai/discord": "file:dasha.ai-discord-0.1.4.tgz",
     "@dasha.ai/sdk": "^0.6.2",
     "bson": "^4.4.1",
     "discord.js": "^12.5.3",
@@ -22,7 +22,6 @@
     "googleapis": "^84.0.0",
     "luxon": "^2.0.2",
     "open": "^8.2.1",
-    "sodium": "^3.0.2",
     "winston": "^3.3.3"
   }
 }
