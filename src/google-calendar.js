@@ -50,11 +50,14 @@ module.exports.authorize = function authorize() {
   });
 };
 
-module.exports.book = async function book({ day_of_week, time_hour, time_duration, title }) {
+module.exports.book = async function book({ day_of_week, time_hour, time_duration, title, force }) {
+  force = force ?? false;
+
   assert(typeof day_of_week === "string");
   assert(typeof time_hour === "number" && 0 <= time_hour && time_hour < 24);
   assert(typeof time_duration === "number" && time_duration >= 0);
   assert(typeof title === "string");
+  assert(typeof force === "boolean");
 
   const weekdayIndex = luxon.Info.weekdays()
     .map((s) => s.toLowerCase())
@@ -89,9 +92,11 @@ module.exports.book = async function book({ day_of_week, time_hour, time_duratio
       timeMax: eventEnd.toISO(),
     });
 
-    if (conflictingEvents.items.length > 0) {
+    const conflictingEventNames = conflictingEvents.items.map((e) => e.summary);
+
+    if (conflictingEventNames.length > 0 && !force) {
       log.info("event conflict found");
-      return "conflict";
+      return { result: "conflict", conflicting_event_names: conflictingEventNames };
     }
 
     await calendarApi.events.insert({
@@ -105,9 +110,9 @@ module.exports.book = async function book({ day_of_week, time_hour, time_duratio
 
     log.info("event booked successfully");
 
-    return "success";
+    return { result: "success", conflicting_event_names: conflictingEventNames };
   } catch (error) {
     log.error(error);
-    return "error";
+    return { result: "error", conflicting_event_names: [] };
   }
 };

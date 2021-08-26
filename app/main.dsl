@@ -22,18 +22,19 @@ context
 @param day_of_week - от"monday" до "sunday"
 @param time_hour - время начаал события; [0; 24)
 @param time_duration - продолжительность события в часах
-@param title event - заголовок события
+@param title - заголовок события
+@param force - бронировать, даже если есть конфликты
 
-@returns "success" - событие успешно создано
-@returns "conflict" - время события пересекается с другими событиями
-@returns "error" - ошибка создания события
+@returns result - успешно ли было бронирование
+@returns conflicting_event_titles - заголовки событий, с которыми был конфликт
 */
 external function google_calendar_book(
-day_of_week: string,
-time_hour: number,
-time_duration: number,
-title: string
-): "success" | "conflict" | "error";
+  day_of_week: string,
+  time_hour: number,
+  time_duration: number,
+  title: string,
+  force: boolean = false
+): { result: "success" | "conflict" | "error"; conflicting_event_titles: string[]; };
 
 /**
 Пригласить пользователя Discord в голосовой канал, в котором находится бот
@@ -364,13 +365,13 @@ node google_calendar_time
     {
       #sayText("Создаю встречу");
       
-      var result = external google_calendar_book(
-      $day_of_week ?? "",
-      $time_hour ?? 0,
-      $time_duration ?? 0,
-      $title ?? ""
+      var response = external google_calendar_book(
+        $day_of_week ?? "",
+        $time_hour ?? 0,
+        $time_duration ?? 0,
+        $title ?? ""
       );
-      if (result == "success")
+      if (response.result == "success")
       {
         #sayText("Готово, встреча успешно создана");
         digression disable
@@ -379,11 +380,17 @@ node google_calendar_time
         }
         ;
       }
-      if (result == "conflict")
+      if (response.result == "conflict")
       {
-        #sayText("К сожалению, на это время у вас уже есть встреча, давайте выберем другое время?");
+        #sayText("К сожалению, на это время у вас уже есть встречи.");
+
+        for (var event_title in response.conflicting_event_titles) {
+          #sayText(event_title + ".");
+        }
+
+        #sayText("Давайте выберем другое время?");
       }
-      if (result == "error")
+      if (response.result == "error")
       {
         #sayText("У меня не получилось создать встречу, попробуем еще раз?");
       }
