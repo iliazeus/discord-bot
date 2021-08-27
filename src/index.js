@@ -4,14 +4,20 @@ const assert = require("assert");
 const events = require("events");
 const fs = require("fs");
 
-const { DiscordVoiceAdapter } = require("@dasha.ai/discord");
 const dasha = require("@dasha.ai/sdk");
+const adapter = require("@dasha.ai/discord");
 const discord = require("discord.js");
 
 const log = require("./log");
+log.level = "debug";
 
 dasha.log.clear();
 dasha.log.add(log);
+dasha.log.level = "debug";
+
+adapter.log.clear();
+adapter.log.add(log);
+adapter.log.level = "debug";
 
 const gcalendar = require("./google-calendar");
 
@@ -133,7 +139,10 @@ async function main() {
 
       log.info("connecting");
 
-      const dashaDiscordAdapter = new DiscordVoiceAdapter(dashaAudioChannel, discordVoiceChannel);
+      const dashaDiscordAdapter = new adapter.DiscordVoiceAdapter(
+        dashaAudioChannel,
+        discordVoiceChannel
+      );
 
       log.info("waiting for conversation to end");
 
